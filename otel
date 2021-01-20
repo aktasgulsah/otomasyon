@@ -1,0 +1,9 @@
+VeriTabani_Baglanti = new OleDbConnection("Provider = Microsoft.ACE.OleDb.12.0; Data source = radarOtelveritaban.accdb");
+            Veri_Komut = new OleDbCommand();
+            VeriTabani_Baglanti.Open();
+            Veri_Komut.Connection = VeriTabani_Baglanti;
+            Veri_Komut.CommandText = "Insert into kimlikBilgileri (TC, Adi, Soyadi, Telefon_no, Mail_adresi, Oda_numarasi, Giriş_tarihi, Çikiş_tarihi, Ucret) values " +
+                "('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + maskedTextBox1.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + dateTimePicker1.Value.ToString("dd-MM-yyyy") + "','" + dateTimePicker2.Value.ToString("dd-MM-yyyy") + "'," + Convert.ToInt32(textBox6.Text) + ")";
+            Veri_Komut.ExecuteNonQuery();
+            VeriTabani_Baglanti.Close();
+            Tablo_Veri_Getir();
